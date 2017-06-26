@@ -77,6 +77,10 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         // Fetch messages every second
         Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.queryParse), userInfo: nil, repeats: true)
+        
+        
+        chatTableView.rowHeight = UITableViewAutomaticDimension
+        chatTableView.estimatedRowHeight = 50
     }
 
     override func didReceiveMemoryWarning() {
