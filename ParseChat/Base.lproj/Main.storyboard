@@ -74,7 +74,7 @@
         <!--Chat-->
         <scene sceneID="K6F-cc-vD2">
             <objects>
-                <viewController id="74C-3u-DJy" customClass="ChatViewController" customModule="ParseChat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChatViewController" id="74C-3u-DJy" customClass="ChatViewController" customModule="ParseChat" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="OBu-tT-Vme"/>
                         <viewControllerLayoutGuide type="bottom" id="vT8-Ft-mIr"/>
@@ -98,33 +98,46 @@
                                     <action selector="sendMessage:" destination="74C-3u-DJy" eventType="touchUpInside" id="D3D-kf-Lwh"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qSo-Kq-Tbj">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="93" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qSo-Kq-Tbj">
                                 <rect key="frame" x="0.0" y="110" width="375" height="557"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChatCell" id="3vG-Zy-gnc" customClass="ChatTableViewCell" customModule="ParseChat" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChatCell" rowHeight="93" id="3vG-Zy-gnc" customClass="ChatTableViewCell" customModule="ParseChat" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="93"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3vG-Zy-gnc" id="ubG-DF-8BF">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="92.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mHF-r1-S1k">
-                                                    <rect key="frame" x="26" y="11" width="341" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kG7-QO-1PD">
+                                                    <rect key="frame" x="16" y="0.0" width="343" height="18"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="18" id="C4U-Ue-faP"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="User" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kG7-QO-1PD">
-                                                    <rect key="frame" x="266" y="14" width="85" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mHF-r1-S1k">
+                                                    <rect key="frame" x="8" y="18" width="359" height="74.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="48" id="Bz8-Fa-bBu"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="mHF-r1-S1k" secondAttribute="trailing" constant="8" id="7Wu-ef-dZ3"/>
+                                                <constraint firstItem="mHF-r1-S1k" firstAttribute="top" secondItem="kG7-QO-1PD" secondAttribute="bottom" id="Rxh-DS-aj3"/>
+                                                <constraint firstAttribute="bottom" secondItem="mHF-r1-S1k" secondAttribute="bottom" id="bSs-dE-GlB"/>
+                                                <constraint firstItem="kG7-QO-1PD" firstAttribute="top" secondItem="ubG-DF-8BF" secondAttribute="top" id="fjQ-yb-1MB"/>
+                                                <constraint firstItem="kG7-QO-1PD" firstAttribute="leading" secondItem="ubG-DF-8BF" secondAttribute="leading" constant="16" id="g5w-RE-rVk"/>
+                                                <constraint firstAttribute="trailing" secondItem="kG7-QO-1PD" secondAttribute="trailing" constant="16" id="ncK-pJ-iUa"/>
+                                                <constraint firstItem="mHF-r1-S1k" firstAttribute="leading" secondItem="ubG-DF-8BF" secondAttribute="leading" constant="8" id="xin-3M-twd"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="messageLabel" destination="mHF-r1-S1k" id="eNN-jR-a5W"/>
