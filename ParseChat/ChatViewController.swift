@@ -14,11 +14,14 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var messageText: UITextField!
     @IBOutlet weak var chatTableView: UITableView!
     
+    
     var chatMessages: [PFObject] = []
     
     @IBAction func sendMessage(_ sender: UIButton) {
         let chatMessage = PFObject(className: "Message_fbuJuly2017")
         chatMessage["text"] = messageText.text ?? ""
+        print("here:\(PFUser.getCurrentUserInBackground())")
+        chatMessage["user"] = PFUser.current()
         chatMessage.saveInBackground { (success, error) in
             if success {
                 print("The message was saved!")
@@ -31,11 +34,13 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     func queryParse() {
         let query = PFQuery(className: "Message_fbuJuly2017")
         query.addDescendingOrder("createdAt")
+        query.includeKey("user")
         
         query.findObjectsInBackground() { (posts: [PFObject]?, error: Error?) in
             if let posts = posts {
                 self.chatMessages = posts
                 self.chatTableView.reloadData()
+            
             }
             else {
                 print(error!.localizedDescription)
@@ -52,6 +57,11 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChatCell", for: indexPath) as!ChatTableViewCell
         
         let message = (chatMessages[indexPath.row]["text"] ?? "") as! String
+        
+        if chatMessages[indexPath.row]["user"] != nil {
+            let user = chatMessages[indexPath.row]["user"] as! PFUser
+            cell.userLabel.text = user.username as! String
+        }
         
         cell.messageLabel.text = message
         
