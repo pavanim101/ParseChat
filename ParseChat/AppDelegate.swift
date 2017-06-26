@@ -6,6 +6,7 @@
 //  Copyright © 2017 Pavani Malli. All rights reserved.
 //
 
+import Parse
 import UIKit
 
 @UIApplicationMain
@@ -15,7 +16,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        Parse.initialize(with: ParseClientConfiguration(block: { (configuration) in
+            configuration.applicationId = "parseChatID"
+            configuration.server = "https://blooming-thicket-89345.herokuapp.com/parse"
+        }))
+        
         return true
     }
 
